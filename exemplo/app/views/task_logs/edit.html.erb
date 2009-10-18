@@ -1,0 +1,36 @@
+<h1>Editing task_log</h1>
+
+<% form_for(@task_log) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :task %><br />
+    <%= f.text_field :task %>
+  </p>
+  <p>
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </p>
+  <p>
+    <%= f.label :log_date %><br />
+    <%= f.date_select :log_date %>
+  </p>
+  <p>
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.label :old_status %><br />
+    <%= f.text_field :old_status %>
+  </p>
+  <p>
+    <%= f.label :new_status %><br />
+    <%= f.text_field :new_status %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @task_log %> |
+<%= link_to 'Back', task_logs_path %>

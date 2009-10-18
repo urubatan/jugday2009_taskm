@@ -1,0 +1,30 @@
+<h1>Listing task_logs</h1>
+
+<table>
+  <tr>
+    <th>Task</th>
+    <th>User</th>
+    <th>Log date</th>
+    <th>Comment</th>
+    <th>Old status</th>
+    <th>New status</th>
+  </tr>
+
+<% @task_logs.each do |task_log| %>
+  <tr>
+    <td><%=h task_log.task %></td>
+    <td><%=h task_log.user %></td>
+    <td><%=h task_log.log_date %></td>
+    <td><%=h task_log.comment %></td>
+    <td><%=h task_log.old_status %></td>
+    <td><%=h task_log.new_status %></td>
+    <td><%= link_to 'Show', task_log %></td>
+    <td><%= link_to 'Edit', edit_task_log_path(task_log) %></td>
+    <td><%= link_to 'Destroy', task_log, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New task_log', new_task_log_path %>

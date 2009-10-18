@@ -1,0 +1,33 @@
+<p>
+  <b>Task:</b>
+  <%=h @task_log.task %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @task_log.user %>
+</p>
+
+<p>
+  <b>Log date:</b>
+  <%=h @task_log.log_date %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%=h @task_log.comment %>
+</p>
+
+<p>
+  <b>Old status:</b>
+  <%=h @task_log.old_status %>
+</p>
+
+<p>
+  <b>New status:</b>
+  <%=h @task_log.new_status %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_log_path(@task_log) %> |
+<%= link_to 'Back', task_logs_path %>

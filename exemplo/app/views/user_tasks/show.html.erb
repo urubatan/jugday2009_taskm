@@ -1,0 +1,18 @@
+<p>
+  <b>User:</b>
+  <%=h @user_task.user %>
+</p>
+
+<p>
+  <b>Task:</b>
+  <%=h @user_task.task %>
+</p>
+
+<p>
+  <b>Stage:</b>
+  <%=h @user_task.stage %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_task_path(@user_task) %> |
+<%= link_to 'Back', user_tasks_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  task: 
+  user: 
+  log_date: 2009-10-18
+  comment: MyText
+  old_status: 
+  new_status: 
+
+two:
+  task: 
+  user: 
+  log_date: 2009-10-18
+  comment: MyText
+  old_status: 
+  new_status: 

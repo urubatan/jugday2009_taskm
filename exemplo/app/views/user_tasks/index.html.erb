@@ -1,0 +1,24 @@
+<h1>Listing user_tasks</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Task</th>
+    <th>Stage</th>
+  </tr>
+
+<% @user_tasks.each do |user_task| %>
+  <tr>
+    <td><%=h user_task.user %></td>
+    <td><%=h user_task.task %></td>
+    <td><%=h user_task.stage %></td>
+    <td><%= link_to 'Show', user_task %></td>
+    <td><%= link_to 'Edit', edit_user_task_path(user_task) %></td>
+    <td><%= link_to 'Destroy', user_task, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New user_task', new_user_task_path %>

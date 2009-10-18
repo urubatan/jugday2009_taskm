@@ -1,0 +1,24 @@
+<h1>Editing user_task</h1>
+
+<% form_for(@user_task) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </p>
+  <p>
+    <%= f.label :task %><br />
+    <%= f.text_field :task %>
+  </p>
+  <p>
+    <%= f.label :stage %><br />
+    <%= f.text_field :stage %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @user_task %> |
+<%= link_to 'Back', user_tasks_path %>
