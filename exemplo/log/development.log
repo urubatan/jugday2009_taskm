@@ -1,0 +1,110 @@
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-22 13:32:54) [GET]
+
+ActionController::RoutingError (No route matches "/sessions/new" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionController#new (for 127.0.0.1 at 2009-10-22 13:33:11) [GET]
+Rendering session/new
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.label) on line #2 of app/views/session/new.html.erb:
+1: <% form_tag do |f| %>
+2:   <%= f.label :login, 'Login' %>
+3:   <%= f.text_field :login %><br/>
+4:   <%= f.label :password, 'Password' %>
+5:   <%= f.text_field :password %><br/>
+
+    app/views/session/new.html.erb:2
+    app/views/session/new.html.erb:1
+
+Rendered rescues/_trace (156.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SessionController#new (for 127.0.0.1 at 2009-10-22 13:35:53) [GET]
+Rendering session/new
+
+ActionView::TemplateError (wrong number of arguments (1 for 2)) on line #3 of app/views/session/new.html.erb:
+1: <% form_tag do  %>
+2:   <%= label :login, 'Login' %>
+3:   <%= text_field :login %><br/>
+4:   <%= label :password, 'Password' %>
+5:   <%= text_field :password %><br/>
+6:   <%= submit_tag %>
+
+    app/views/session/new.html.erb:3:in `text_field'
+    app/views/session/new.html.erb:3
+    app/views/session/new.html.erb:1
+
+Rendered rescues/_trace (266.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SessionController#new (for 127.0.0.1 at 2009-10-22 13:36:56) [GET]
+Rendering session/new
+Completed in 3531ms (View: 3531, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionController#new (for 127.0.0.1 at 2009-10-22 13:37:58) [GET]
+Rendering session/new
+Completed in 15ms (View: 15, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (3875.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1234.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20091018031822)
+  [4;36;1mSQL (15.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(255), "password" varchar(255), "name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091018031822')[0m
+Migrating to CreateProjects (20091018031902)
+  [4;36;1mSQL (15.0ms)[0m   [0;1mCREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091018031902')[0m
+Migrating to CreateTasks (20091018032225)
+  [4;36;1mSQL (594.0ms)[0m   [0;1mCREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "project_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091018032225')[0m
+Migrating to CreateUserTasks (20091018032730)
+  [4;36;1mSQL (16.0ms)[0m   [0;1mCREATE TABLE "user_tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "task_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (15.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091018032730')[0m
+Migrating to CreateTaskLogs (20091018032848)
+  [4;36;1mSQL (31.0ms)[0m   [0;1mCREATE TABLE "task_logs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "task_id" integer, "user_id" integer, "log_date" date, "comment" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091018032848')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("projects")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("task_logs")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("tasks")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("user_tasks")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mUser Create (15.0ms)[0m   [0;1mINSERT INTO "users" ("name", "updated_at", "login", "password", "email", "created_at") VALUES('Rodrigo Urubatan', '2009-10-22 16:17:37', 'urubatan', 'urubatan', 'rodrigo@urubatan.com.br', '2009-10-22 16:17:37')[0m
+
+
+Processing SessionController#new (for 127.0.0.1 at 2009-10-22 14:26:19) [GET]
+Rendering session/new
+Completed in 3079ms (View: 3063, DB: 0) | 200 OK [http://localhost/session/new]
+
+
+Processing SessionController#new (for 127.0.0.1 at 2009-10-22 14:26:31) [POST]
+  Parameters: {"commit"=>"Save changes", "authenticity_token"=>"2yNnYasF9pv5oTceAaR+QtrgdDs3Dbkm/pKyFKkSpDc=", "login"=>"urubatan", "password"=>"urubatan"}
+Rendering session/new
+Completed in 15ms (View: 15, DB: 0) | 200 OK [http://localhost/session/new]
