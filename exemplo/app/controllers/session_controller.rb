@@ -3,7 +3,7 @@ class SessionController < ApplicationController
   end
 
   def create
-    @user = User.login(params[:name],params[:password])
+    @user = User.logon(params[:name],params[:password])
     if @user
       session[:user_id] = @user.id
       session[:user_name] = @user.name
