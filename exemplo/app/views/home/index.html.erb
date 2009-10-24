@@ -1,25 +1,66 @@
 <script type="text/javascript">
 $(function() {
-		$("#target").sortable({
+		$("#status0").sortable({
 			revert: true,
 			stop: function(event,ui){
-				alert(ui.item.attr('id'));
-				alert($(this).attr('id'));
+				$.post('/home/change_status',{task_id:ui.item.attr('id'),status:0});
 			}
 		});
-		$(".draggable").draggable({
-			connectToSortable: '#target'
-		})
+		$("#status1").sortable({
+			revert: true,
+			stop: function(event,ui){
+				$.post('/home/change_status',{task_id:ui.item.attr('id'),status:1});
+			}
+		});
+		$("#status2").sortable({
+			revert: true,
+			stop: function(event,ui){
+				$.post('/home/change_status',{task_id:ui.item.attr('id'),status:2});
+			}
+		});
+		$("#status3").sortable({
+			revert: true,
+			stop: function(event,ui){
+				$.post('/home/change_status',{task_id:ui.item.attr('id'),status:3});
+			}
+		});
+		$(".draggable").draggable(
+		{
+			connectToSortable:'.target'
+		}
+		)
 	});
 
 </script>
-<div  style="float:left;width:100px;background-color:green;height:200px;" id="source">
-<div class="draggable" id="project1" style="background-color:blue;margin:5 5 5 5;">
-Project1
+<div  style="float:left;width:23%;background-color:green;min-height:700px" id="status0" class="target">
+<% @ns_tasks.each do |t| %>
+<div class="draggable" id="task<%= t.id %>" style="background-color:blue;margin:5 5 5 5;">
+<h2><%=h t.title%></h2>
+<%= h t.description %>
 </div>
-<div class="draggable" id="project2" style="background-color:blue;margin:5 5 5 5;">
-Project2
+<% end %>
 </div>
+<div  style="float:left;width:23%;background-color:yellow;min-height:700px" id="status1" class="target">
+<% @dev_tasks.each do |t| %>
+<div class="draggable" id="task<%= t.id %>" style="background-color:blue;margin:5 5 5 5;">
+<h2><%=h t.title%></h2>
+<%= h t.description %>
 </div>
-<div  style="float:right;width:100px;background-color:yellow;height:200px;" id="target">
+<% end %>
+</div>
+<div  style="float:left;width:23%;background-color:gray;min-height:700px" id="status2" class="target">
+<% @test_tasks.each do |t| %>
+<div class="draggable" id="task<%= t.id %>" style="background-color:blue;margin:5 5 5 5;">
+<h2><%=h t.title%></h2>
+<%= h t.description %>
+</div>
+<% end %>
+</div>
+<div  style="float:left;width:23%;background-color:purple;min-height:700px" id="status3" class="target">
+<% @done_tasks.each do |t| %>
+<div class="draggable" id="task<%= t.id %>" style="background-color:blue;margin:5 5 5 5;">
+<h2><%=h t.title%></h2>
+<%= h t.description %>
+</div>
+<% end %>
 </div>

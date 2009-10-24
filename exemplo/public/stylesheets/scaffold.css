@@ -52,3 +52,14 @@ a:hover { color: #fff; background-color:#000; }
   list-style: square;
 }
 
+#header {
+  width: 100%;
+  clear: both;
+  height: 60px;
+  background-color:lightblue;
+}
+#content {
+width:100%;
+clear: none;
+min-height: 400px;
+}
