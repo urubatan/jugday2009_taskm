@@ -63,3 +63,22 @@ width:100%;
 clear: none;
 min-height: 400px;
 }
+.statusContainer {
+  float:left;
+  width:22%;
+  padding-left:10px;
+  padding-right:10px;
+}
+.draggable h2 {
+  color: white;
+  margin: 0 0 0 0;
+}
+.draggable {
+  color:white;
+  border-color: black;
+  border-style: inset;
+  min-height: 90px;
+}
+.ui-draggable {
+  clear:both;
+}

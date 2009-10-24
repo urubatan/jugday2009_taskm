@@ -1,38 +1,6 @@
-<script type="text/javascript">
-$(function() {
-		$("#status0").sortable({
-			revert: true,
-			stop: function(event,ui){
-				$.post('/home/change_status',{task_id:ui.item.attr('id'),status:0});
-			}
-		});
-		$("#status1").sortable({
-			revert: true,
-			stop: function(event,ui){
-				$.post('/home/change_status',{task_id:ui.item.attr('id'),status:1});
-			}
-		});
-		$("#status2").sortable({
-			revert: true,
-			stop: function(event,ui){
-				$.post('/home/change_status',{task_id:ui.item.attr('id'),status:2});
-			}
-		});
-		$("#status3").sortable({
-			revert: true,
-			stop: function(event,ui){
-				$.post('/home/change_status',{task_id:ui.item.attr('id'),status:3});
-			}
-		});
-		$(".draggable").draggable(
-		{
-			connectToSortable:'.target'
-		}
-		)
-	});
-
-</script>
-<div  style="float:left;width:23%;background-color:green;min-height:700px" id="status0" class="target">
+<div class="statusContainer">
+<h2>Not Started</h2>
+<div  style="float:left;width:100%;background-color:green;min-height:700px" id="status0" class="target">
 <% @ns_tasks.each do |t| %>
 <div class="draggable" id="task<%= t.id %>" style="background-color:blue;margin:5 5 5 5;">
 <h2><%=h t.title%></h2>
@@ -40,7 +8,10 @@ $(function() {
 </div>
 <% end %>
 </div>
-<div  style="float:left;width:23%;background-color:yellow;min-height:700px" id="status1" class="target">
+</div>
+<div class="statusContainer">
+<h2>Development</h2>
+<div  style="float:left;width:100%;background-color:yellow;min-height:700px" id="status1" class="target">
 <% @dev_tasks.each do |t| %>
 <div class="draggable" id="task<%= t.id %>" style="background-color:blue;margin:5 5 5 5;">
 <h2><%=h t.title%></h2>
@@ -48,7 +19,10 @@ $(function() {
 </div>
 <% end %>
 </div>
-<div  style="float:left;width:23%;background-color:gray;min-height:700px" id="status2" class="target">
+</div>
+<div class="statusContainer">
+<h2>Testing</h2>
+<div  style="float:left;width:100%;background-color:gray;min-height:700px" id="status2" class="target">
 <% @test_tasks.each do |t| %>
 <div class="draggable" id="task<%= t.id %>" style="background-color:blue;margin:5 5 5 5;">
 <h2><%=h t.title%></h2>
@@ -56,7 +30,10 @@ $(function() {
 </div>
 <% end %>
 </div>
-<div  style="float:left;width:23%;background-color:purple;min-height:700px" id="status3" class="target">
+</div>
+<div class="statusContainer">
+<h2>Done</h2>
+<div  style="float:left;width:100%;background-color:purple;min-height:700px" id="status3" class="target">
 <% @done_tasks.each do |t| %>
 <div class="draggable" id="task<%= t.id %>" style="background-color:blue;margin:5 5 5 5;">
 <h2><%=h t.title%></h2>
@@ -64,3 +41,5 @@ $(function() {
 </div>
 <% end %>
 </div>
+</div>
+<%= link_to_remote 'aaa', :url => {:controller => "home"} %>

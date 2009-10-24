@@ -1,14 +1,14 @@
 class SessionController < ApplicationController
-  def index
+  def new
   end
 
   def create
-    @user = User.logon(params[:name],params[:password])
+    @user = User.logon(params[:login],params[:password])
     if @user
       session[:user_id] = @user.id
       session[:user_name] = @user.name
       session[:user_login] = @user.login
-      redirect_to session[:desired_url] | home_path
+      redirect_to session[:desired_url] || root_path
     else
       redirect_to :action => 'new'
     end

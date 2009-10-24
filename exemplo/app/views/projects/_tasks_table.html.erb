@@ -1,0 +1,24 @@
+<table width="100%">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>&nbsp;</th>
+  <tr>
+  <% @tasks.each do |task| %>
+  <tr>
+	<td><%=h task.title %></td>
+	<td><%=h task.description %></td>
+	<td><%=h task.status %></td>
+	<td><%= link_to_remote 'Destroy', :confirm => 'Are you sure?', :type => :delete, :url => {:controller => 'tasks', :action => 'destroy', :id => task.id, :projectid => @project.id } %>  </td>
+  <tr>
+  <% end %>
+  <% form_remote_for :task,@nt, :url => project_tasks_path(@project), :method => 'post' do |f| %>
+  <tr>
+	<td><%=f.text_field :title%></td>
+	<td><%=f.text_field :description %></td>
+	<td><%=f.text_field :status %></td>
+	<td><%= f.submit 'Create' %></td>
+  </tr>
+  <% end %>
+</table>

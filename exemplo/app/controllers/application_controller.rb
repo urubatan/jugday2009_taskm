@@ -4,7 +4,12 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-
+  before_filter :needs_login
   # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
+  filter_parameter_logging :password
+  private
+  def needs_login
+    redirect_to :controller => 'session', :action => 'new' unless session[:user_id] || (controller_name=='session')
+    session[:user_id]
+  end
 end

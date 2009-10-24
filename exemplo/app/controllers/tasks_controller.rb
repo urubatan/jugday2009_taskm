@@ -41,15 +41,23 @@ class TasksController < ApplicationController
   # POST /tasks.xml
   def create
     @task = Task.new(params[:task])
-
+    @task.project_id = params[:project_id]
+    @project = Project.find(params[:project_id])
+    @tasks = @project.tasks
+    @nt = Task.new :project_id => @project.id
     respond_to do |format|
       if @task.save
         flash[:notice] = 'Task was successfully created.'
         format.html { redirect_to(@task) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
+        format.js {render :update do |page|
+          page.replace_html 'tablebody', :partial => 'projects/tasks_table'
+        end
+        }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -76,10 +84,16 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-
+    @project = Project.find(params[:projectid])
+    @tasks = @project.tasks
+    @nt = Task.new :project_id => @project.id
     respond_to do |format|
       format.html { redirect_to(tasks_url) }
       format.xml  { head :ok }
+      format.js {render :update do |page|
+        page.replace_html 'tablebody', :partial => 'projects/tasks_table'
+      end
+      }
     end
   end
 end

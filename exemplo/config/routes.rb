@@ -3,9 +3,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :user_tasks
 
-  map.resources :tasks
-
-  map.resources :projects
+  map.resources :projects do |p|
+    p.resources :tasks
+  end
 
   map.resources :users
 

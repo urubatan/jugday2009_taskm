@@ -1,9 +1,9 @@
 class HomeController < ApplicationController
   def index
-    @ns_tasks = Task.find_all_by_status(0);
-    @dev_tasks = Task.find_all_by_status(1);
-    @test_tasks = Task.find_all_by_status(2);
-    @done_tasks = Task.find_all_by_status(3);
+    @ns_tasks = Task.not_started;
+    @dev_tasks = Task.development;
+    @test_tasks = Task.testing;
+    @done_tasks = Task.done;
   end
   
   def change_status
