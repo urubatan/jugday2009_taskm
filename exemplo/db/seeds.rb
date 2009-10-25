@@ -5,4 +5,10 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
-User.create :login => 'urubatan', :password => 'urubatan', :name => 'Rodrigo Urubatan', :email => 'rodrigo@urubatan.com.br'
+User.create :login => 'teste', :password => 'teste', :name => 'Rodrigo Urubatan', :email => 'teste@teste.com.br'
+project = Project.create :name => 'Sample Project'
+project.tasks.create :title => 'Task 1', :description => 'Test', :status => 0
+project.tasks.create :title => 'Task 2', :description => 'Test', :status => 2
+project.tasks.create :title => 'Task 3', :description => 'Test', :status => 3
+project.tasks.create :title => 'Task r', :description => 'Test', :status => 1
+project.tasks.create :title => 'Task 5', :description => 'Test', :status => 0

@@ -1,9 +1,18 @@
 class HomeController < ApplicationController
   def index
-    @ns_tasks = Task.not_started;
-    @dev_tasks = Task.development;
-    @test_tasks = Task.testing;
-    @done_tasks = Task.done;
+    project_id = session[:project_id]
+    if project_id
+      project = Project.find project_id
+      @ns_tasks = project.tasks.not_started;
+      @dev_tasks = project.tasks.development;
+      @test_tasks = project.tasks.testing;
+      @done_tasks = project.tasks.done;
+    else
+      @ns_tasks = []
+      @dev_tasks = []
+      @test_tasks = []
+      @done_tasks = []
+    end
   end
   
   def change_status
@@ -23,5 +32,11 @@ class HomeController < ApplicationController
             page["#status#{old_status}"].append("$('#task#{task.id}')"); 
         end
       end
+  end
+  def select_project
+    project_id = params[:project_id]
+    project_id = project_id.to_i if project_id
+    session[:project_id] = project_id
+    redirect_to :action => 'index'
   end
 end

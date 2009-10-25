@@ -76,9 +76,12 @@ min-height: 400px;
 .draggable {
   color:white;
   border-color: black;
-  border-style: inset;
-  min-height: 90px;
+  border-style: outset;
+  height: 110px;
 }
 .ui-draggable {
   clear:both;
+}
+.target {
+  padding: 2 2 2 2;
 }

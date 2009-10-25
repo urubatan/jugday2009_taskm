@@ -47,7 +47,6 @@ class TasksController < ApplicationController
     @nt = Task.new :project_id => @project.id
     respond_to do |format|
       if @task.save
-        flash[:notice] = 'Task was successfully created.'
         format.html { redirect_to(@task) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
         format.js {render :update do |page|
@@ -57,7 +56,10 @@ class TasksController < ApplicationController
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
-        format.js
+        format.js { render :update do |page|
+          page.alert @task.error.full_messages.join('\n')
+        end
+        }
       end
     end
   end
